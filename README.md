@@ -14,3 +14,7 @@ computer vision
 `export FLASK_ENV=development`
 
 `flask run`
+
+go to 
+
+http://localhost:5000/apidocs/
