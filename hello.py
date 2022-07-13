@@ -4,48 +4,26 @@ from flasgger import Swagger
 app = Flask(__name__)
 swagger = Swagger(app)
 
-@app.route('/colors/<palette>/')
-def colors(palette):
-    """Example endpoint returning a list of colors by palette
-    This is using docstrings for specifications.
+@app.route('/v1/img_for_word', methods=['GET'])
+def test_api():
+  """
+    Get img for word
     ---
+    tags:
+      - Node APIs
+    produces: application/json,
     parameters:
-      - name: palette
-        in: path
-        type: string
-        enum: ['all', 'rgb', 'cmyk']
-        required: true
-        default: all
-    definitions:
-      Palette:
-        type: object
-        properties:
-          palette_name:
-            type: array
-            items:
-              $ref: '#/definitions/Color'
-      Color:
-        type: string
+    - name: word
+      in: query
+      type: string
+      required: true
     responses:
       200:
-        description: A list of colors (may be filtered by palette)
-        schema:
-          $ref: '#/definitions/Palette'
+        description: Retrieve image for word
         examples:
-          rgb: ['red', 'green', 'blue']
-    """
-    all_colors = {
-        'cmyk': ['cyan', 'magenta', 'yellow', 'black'],
-        'rgb': ['red', 'green', 'blue']
-    }
-    if palette == 'all':
-        result = all_colors
-    else:
-        result = {palette: all_colors.get(palette)}
-
-    return jsonify(result)
-
-# app.run(debug=True)
+          ans: {"main_color":"red", "main_shape":["00100", "01010", "10001", "00100", "01010"]}
+  """
+  return jsonify(ans={"main_color":"red", "main_shape":["00100", "01010", "10001", "01010", "00100"]})
 
 if __name__  == '__main__':
     app.debug = True

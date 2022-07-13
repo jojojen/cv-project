@@ -18,3 +18,7 @@ computer vision
 go to 
 
 http://localhost:5000/apidocs/
+
+# leave env
+
+`deactivate`
