@@ -12,7 +12,7 @@ computer vision
 `pip install -r requirements.txt`
 
 # local run
-`export FLASK_APP=hello`
+`export FLASK_APP=app`
 
 `export FLASK_ENV=development`
 

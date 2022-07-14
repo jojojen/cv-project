@@ -1,15 +1,15 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for
 from flasgger import Swagger
 
 app = Flask(__name__)
 swagger = Swagger(app)
 
 @app.route('/')
-def index_api():
-  flask.redirect("https://cv-project-maverick.herokuapp.com/apidocs/#", code=302, Response=None)
+def api_index():
+    return redirect('/apidocs/')
 
 @app.route('/v1/img_for_word', methods=['GET'])
-def test_api():
+def get_img_for_word():
   """
     Get img for word
     ---
