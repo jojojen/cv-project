@@ -6,7 +6,7 @@ swagger = Swagger(app)
 
 @app.route('/')
 def api_index():
-    return redirect("/apidocs/")
+    return redirect("https://cv-project-maverick.herokuapp.com/apidocs/")
 
 @app.route('/v1/img_for_word', methods=['GET'])
 def test_api():
