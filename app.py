@@ -4,6 +4,10 @@ from flasgger import Swagger
 app = Flask(__name__)
 swagger = Swagger(app)
 
+@app.route('/')
+def api_index():
+    return redirect("/apidocs/")
+
 @app.route('/v1/img_for_word', methods=['GET'])
 def test_api():
   """
