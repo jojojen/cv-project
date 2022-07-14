@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, url_for
+from flask import Flask, jsonify, redirect
 from flasgger import Swagger
 
 app = Flask(__name__)
