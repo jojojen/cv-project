@@ -4,13 +4,6 @@ from flasgger import Swagger
 app = Flask(__name__)
 swagger = Swagger(app)
 
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
-
-@app.route('/')
-def api_index():
-    return redirect("https://cv-project-maverick.herokuapp.com/apidocs/")
-
 @app.route('/v1/img_for_word', methods=['GET'])
 def test_api():
   """
