@@ -1,7 +1,10 @@
 # cv-project
 computer vision
 
-# before run
+# before run on Mac
+
+`cd cv-project`
+
 `python3 -m venv venv`
 
 `. venv/bin/activate`
