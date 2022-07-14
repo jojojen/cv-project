@@ -20,7 +20,7 @@ computer vision
 
 go to 
 
-http://localhost:5000/apidocs/
+http://localhost:5000/
 
 # leave env
 
