@@ -6,7 +6,7 @@ swagger = Swagger(app)
 
 @app.route('/')
 def index_api():
-flask.redirect("https://cv-project-maverick.herokuapp.com/apidocs/#", code=302, Response=None)
+  flask.redirect("https://cv-project-maverick.herokuapp.com/apidocs/#", code=302, Response=None)
 
 @app.route('/v1/img_for_word', methods=['GET'])
 def test_api():
