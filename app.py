@@ -4,9 +4,6 @@ from flasgger import Swagger
 app = Flask(__name__)
 swagger = Swagger(app)
 
-restart_time = "20220715:0908"
-print(restart_time)
-
 @app.route('/')
 def api_index():
     return redirect('/apidocs/')
