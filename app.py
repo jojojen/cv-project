@@ -15,6 +15,7 @@ def get_img_for_word():
       ---
       tags:
         - Computer Vision APIs
+        - restart time:
       produces: application/json,
       parameters:
       - name: word
