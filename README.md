@@ -13,7 +13,7 @@ computer vision
 
 # local run
 
-1. flask run
+Method 1. run without server
 
 `export FLASK_APP=app`
 
@@ -21,13 +21,15 @@ computer vision
 
 `flask run`
 
-2. run with gunicorn
+Method 2. run with gunicorn
 
 `gunicorn --bind 0.0.0.0:5000 app:app`
 
 ---
 
 then go to http://localhost:5000/
+
+shutdown by ctrl + C
 
 # leave env
 
