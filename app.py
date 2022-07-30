@@ -2,6 +2,8 @@ from flask import Flask, jsonify, redirect, request
 from flasgger import Swagger
 import psycopg2
 import numpy as np
+import os
+
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -30,11 +32,11 @@ def get_img_for_word():
             ans: {"main_color":"red", "main_shape":["00100", "01010", "10001", "00100", "01010"]}
     """
     
-    conn = psycopg2.connect(database = process.env.DATABASE_NAME, 
-                            user = process.env.DATABASE_USER,
-                            password = process.env.DATABASE_PASS ,
-                            host = process.env.DATABASE_HOST,
-                            port = process.env.DATABASE_PORT)
+    conn = psycopg2.connect(database = os.environ.get('DATABASE_NAME', None), 
+                            user = os.environ.get('DATABASE_USER', None),
+                            password = os.environ.get('DATABASE_PASS', None),
+                            host = os.environ.get('DATABASE_HOST', None),
+                            port = os.environ.get('DATABASE_PORT', None))
     print("Opened database successfully")
     
     word = request.args.get('word', 1)
