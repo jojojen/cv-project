@@ -48,7 +48,7 @@ def get_img_for_word():
     df = pd.read_sql(sql_str, conn)
     
     if(len(df) == 0):
-        mat = np.zeros((5, 5))
+        mat = np.zeros((5, 5)).astype(int)
         return jsonify(ans={"main_color": "not apple color", "main_shape": json.dumps(mat.tolist())})
     
     lst = df['symbol_shape_detail'][0].split('*')
@@ -60,7 +60,7 @@ def get_img_for_word():
     content = df['symbol_shape_content'][0]
     print(content)
     
-    mat = np.zeros((m, n))
+    mat = np.zeros((m, n)).astype(int)
     for i in range( len(content) ):
         row = int(i / n)
         col = int(i % n)
