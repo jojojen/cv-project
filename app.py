@@ -3,6 +3,7 @@ from flasgger import Swagger
 import psycopg2
 import numpy as np
 import os
+import pandas as pd
 
 
 app = Flask(__name__)
