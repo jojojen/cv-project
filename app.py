@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, redirect, request
 from flasgger import Swagger
+import psycopg2
+import numpy as np
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -27,5 +29,36 @@ def get_img_for_word():
           examples:
             ans: {"main_color":"red", "main_shape":["00100", "01010", "10001", "00100", "01010"]}
     """
+    
+    conn = psycopg2.connect(database = process.env.DATABASE_NAME, 
+                            user = process.env.DATABASE_USER,
+                            password = process.env.DATABASE_PASS ,
+                            host = process.env.DATABASE_HOST,
+                            port = process.env.DATABASE_PORT)
+    print("Opened database successfully")
+    
     word = request.args.get('word', 1)
-    return jsonify(ans={"main_color":"red", "main_shape":["00100", "01010", word, "01010", "00100"]})
+    sql_str = "SELECT * FROM word_symbol_map WHERE word = \'%s\';" % (word)
+    print(sql_str)
+    
+    df = pd.read_sql(sql_str, conn)
+    lst = df['symbol_shape_detail'][0].split('*')
+    print(lst)
+    
+    m = int(lst[0])
+    n = int(lst[1])
+    
+    content = df['symbol_shape_content'][0]
+    print(content)
+    
+    mat = np.zeros((m, n))
+    for i in range( len(content) ):
+        row = int(i / n)
+        col = int(i % n)
+        mat[[row], [col]] = content[i]
+
+    print(mat)
+    
+    main_color = df['symbol_main_color'][0]
+    
+    return jsonify(ans={"main_color": main_color, "main_shape": mat})
