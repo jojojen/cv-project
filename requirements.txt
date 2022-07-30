@@ -4,4 +4,3 @@ gunicorn==20.1.0
 psycopg2
 numpy
 pandas
-json
