@@ -4,6 +4,7 @@ import psycopg2
 import numpy as np
 import os
 import pandas as pd
+import json
 
 
 app = Flask(__name__)
@@ -64,4 +65,4 @@ def get_img_for_word():
     
     main_color = df['symbol_main_color'][0]
     
-    return jsonify(ans={"main_color": main_color, "main_shape": mat})
+    return jsonify(ans={"main_color": main_color, "main_shape": json.dumps(mat.tolist())})
