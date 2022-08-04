@@ -1,11 +1,10 @@
-from flask import Flask, jsonify, redirect, request
-from flasgger import Swagger
+import os
+import json
 import psycopg2
 import numpy as np
-import os
 import pandas as pd
-import json
-
+from flask import Flask, jsonify, redirect, request
+from flasgger import Swagger
 
 app = Flask(__name__)
 swagger = Swagger(app)
